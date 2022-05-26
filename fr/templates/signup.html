@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Signup</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="/static/fonts/linearicons/style.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="/static/css/style.css">
+	</head>
+
+	<body>
+
+		{% if msg|length %}
+			<div class="alert alert-success">
+				<strong>{{msg}}</strong>
+			</div>
+		{% endif %}
+		<div class="wrapper">
+			<div class="inner">
+				<img src="/static/images/image-1.png" alt="" class="image-1">
+				<form action="{{url_for('signup')}}" method="post">
+					<h3>New Account?</h3>
+					<div class="form-holder">
+						<span class="lnr lnr-user"></span>
+						<input type="text" class="form-control" placeholder="Username" name="username">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-users"></span>
+						<select class="form-control" name="usertype">
+							<option>Select</option>
+							<option value="1">Teacher</option>
+							<option value="2">Student</option>
+						</select>
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-phone-handset"></span>
+						<input type="text" class="form-control" placeholder="Phone Number" name="phone">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" class="form-control" placeholder="Mail" name="email">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" placeholder="Password" name="password">
+					</div>
+					<button>
+						<span>Register</span>
+					</button>
+					<a href="{{url_for('login')}}">Already regitsred click here</a>
+				</form>
+				<img src="/static/images/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="/static/js/jquery-3.3.1.min.js"></script>
+		<script src="/static/js/main.js"></script>
+</html>

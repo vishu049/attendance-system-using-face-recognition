@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Education</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Attendance System</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid mt-3">
+  <h6>Welcome, {% if msg|length %}{{msg}}{% endif %}</h6><br>
+  <h3 class="text-center">Press q key after getting green block on face</h3>
+  <div class="row">
+    <div class="col-md-4">
+      {% for class in classdata %}
+        {% if class[3] > timestamp %}
+          {% if class[2] < timestamp %}
+            <div class="card" style="width: 25rem">
+              <div class="card-body">
+                <div class="lead">{{getsubjectname(class[1])}}</div>
+                <p class="small text-muted">Start Time - {{class[2]}}</p>
+                <p class="small text-muted">End Time - {{class[3]}}</p>
+                <a class="btn btn-primary" href="{{url_for('stattendance', subject_id = class[0])}}">Mark Attendance</a>
+              </div>
+            </div><br>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</body>
+</html>
