@@ -27,7 +27,7 @@ mysql = MySQL(app)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'attendenceid01@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Attendence123'
+app.config['MAIL_PASSWORD'] = 'Strive@1'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -243,6 +243,7 @@ def checkattendancepercentage(classid,class_creation_date,student_id):
     class_creation_date = datetime.strptime(class_creation_date, format)
     class_creation_date = class_creation_date.date()
     total_days = (tddate - class_creation_date).days
+    total_days = total_days + 1
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM attendance")
     data = cur.fetchall()
